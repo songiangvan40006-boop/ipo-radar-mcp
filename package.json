@@ -1,0 +1,21 @@
+{
+  "name": "ipo-radar-mcp",
+  "version": "1.1.0",
+  "description": "MCP server for live Indian IPO GMP, subscription status, upcoming IPOs and GMP-vs-listing accuracy (IPO Radar).",
+  "type": "module",
+  "bin": { "ipo-radar-mcp": "src/index.js" },
+  "main": "src/index.js",
+  "files": ["src", "README.md", "LICENSE"],
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2"
+  },
+  "keywords": ["mcp", "model-context-protocol", "ipo", "gmp", "india", "nse", "bse", "stock-market"],
+  "homepage": "https://ipogmpradar.com/mcp-server",
+  "repository": { "type": "git", "url": "git+https://github.com/songiangvan40006-boop/ipo-radar-mcp.git" },
+  "license": "MIT"
+}

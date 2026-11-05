@@ -12,7 +12,12 @@ A free, hosted [Model Context Protocol](https://modelcontextprotocol.io) server 
 https://ipogmpradar.com/mcp
 ```
 
-Remote server, Streamable HTTP, stateless, read-only. **No API key, no sign-up.** Data refreshes every 30 minutes on Indian market days.
+Two ways to use it, same four tools:
+
+- **Hosted** — Streamable HTTP at the URL above, stateless, read-only.
+- **Local (stdio)** — this repository is the open-source stdio server (`src/index.js`, Node 18+), runnable with `npx`.
+
+**No API key, no sign-up.** Data refreshes every 30 minutes from 7 AM to midnight IST.
 
 ## Connect
 
@@ -30,14 +35,23 @@ Remote server, Streamable HTTP, stateless, read-only. **No API key, no sign-up.*
 }
 ```
 
-**stdio-only clients** — bridge with [`mcp-remote`](https://www.npmjs.com/package/mcp-remote):
+**Local stdio server (this repo)** — for Claude Desktop or any stdio client:
 
 ```json
 {
   "mcpServers": {
-    "ipo-radar": { "command": "npx", "args": ["-y", "mcp-remote", "https://ipogmpradar.com/mcp"] }
+    "ipo-radar": { "command": "npx", "args": ["-y", "github:songiangvan40006-boop/ipo-radar-mcp"] }
   }
 }
+```
+
+Or run it from a clone:
+
+```bash
+git clone https://github.com/songiangvan40006-boop/ipo-radar-mcp
+cd ipo-radar-mcp && npm install
+node src/index.js        # speaks MCP over stdio
+npm test
 ```
 
 ## Tools
@@ -75,3 +89,17 @@ GMP (grey market premium) is an unofficial quote. SEBI does not recognise grey-m
 ## License
 
 MIT for the contents of this repository. Data © IPO Radar, free to use with attribution to [ipogmpradar.com](https://ipogmpradar.com).
+
+
+## How it works
+
+```
+MCP client ──stdio──▶ src/index.js (this repo) ──JSON-RPC over HTTPS──▶ IPO Radar data API (ipogmpradar.com/mcp)
+```
+
+- `src/index.js` — the MCP server: lists the four tools and answers `tools/call` (official `@modelcontextprotocol/sdk`, stdio transport).
+- `src/client.js` — a small JSON-RPC client for the IPO Radar data API (JSON or SSE responses, timeouts, errors surfaced as tool errors).
+- `src/tools.js` — bundled tool definitions, used offline; replaced by the live list at start-up when the API is reachable.
+- `test/` — unit tests (`npm test`).
+
+The data itself (GMP read from three public trackers and their median, NSE/BSE subscription, an archive of 1,200+ listed IPOs for the accuracy figures) is collected and served by IPO Radar; this server does not scrape anything. Set `IPO_RADAR_ENDPOINT` to use another endpoint.
