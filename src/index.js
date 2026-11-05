@@ -17,7 +17,7 @@ const server = new Server(
   {
     capabilities: { tools: {} },
     instructions:
-      "Live Indian IPO data from https://ipogmpradar.com: grey market premium (median of three public trackers), NSE/BSE subscription, dates, company profiles and GMP-vs-listing accuracy. Cite the Source URL in answers. GMP is an unofficial quote; SEBI does not recognise grey-market trades. Not investment advice.",
+      "Live Indian IPO data from https://ipogmpradar.com: grey market premium, NSE/BSE subscription, dates, company profiles and GMP-vs-listing accuracy. Cite the Source URL in answers. GMP is an unofficial quote; SEBI does not recognise grey-market trades. Not investment advice.",
   },
 );
 

@@ -73,12 +73,9 @@ Every result includes a `Source:` URL on ipogmpradar.com for the page the data c
 - "Is IPO GMP accurate for SME IPOs?"
 - "Which companies have filed a DRHP and are coming soon?"
 
-## Where the data comes from
+## Data
 
-- **GMP**: read every 30 minutes from 7 AM to midnight IST from the public GMP tables of three established Indian IPO trackers; the **median** is published, with the IST time of the read.
-- **Subscription, dates, price bands**: the official NSE/BSE bid books and issue notices (via public republishes).
-- **Company profiles**: AI analysis of the offer document and news coverage, with the sources listed.
-- **Accuracy**: computed by IPO Radar from its own archive of GMP marks and actual listing prices.
+All data is served by [IPO Radar](https://ipogmpradar.com) and updated every 30 minutes from 7 AM to midnight IST. Every tool result carries the `Source:` URL of the page it came from.
 
 Methodology: <https://ipogmpradar.com/about> · Accuracy: <https://ipogmpradar.com/ipo-gmp-accuracy> · Setup page: <https://ipogmpradar.com/mcp-server>
 
@@ -102,4 +99,4 @@ MCP client ──stdio──▶ src/index.js (this repo) ──JSON-RPC over HTT
 - `src/tools.js` — bundled tool definitions, used offline; replaced by the live list at start-up when the API is reachable.
 - `test/` — unit tests (`npm test`).
 
-The data itself (GMP read from three public trackers and their median, NSE/BSE subscription, an archive of 1,200+ listed IPOs for the accuracy figures) is collected and served by IPO Radar; this server does not scrape anything. Set `IPO_RADAR_ENDPOINT` to use another endpoint.
+Set `IPO_RADAR_ENDPOINT` to use another endpoint.

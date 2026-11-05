@@ -1,7 +1,6 @@
 // Talks to the IPO Radar data API: the hosted MCP endpoint at ipogmpradar.com,
 // which answers stateless JSON-RPC over HTTP (Streamable HTTP, JSON responses).
-// The data pipeline (GMP trackers, NSE/BSE subscription, archive of 1,200+
-// listed IPOs) runs there; this package exposes it to local stdio clients.
+// This package exposes it to local stdio clients.
 
 export const DEFAULT_ENDPOINT = "https://ipogmpradar.com/mcp";
 
