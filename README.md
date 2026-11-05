@@ -75,7 +75,7 @@ Every result includes a `Source:` URL on ipogmpradar.com for the page the data c
 
 ## Where the data comes from
 
-- **GMP**: read every 30 minutes on market days from the public GMP tables of three established Indian IPO trackers; the **median** is published, with the IST time of the read.
+- **GMP**: read every 30 minutes from 7 AM to midnight IST from the public GMP tables of three established Indian IPO trackers; the **median** is published, with the IST time of the read.
 - **Subscription, dates, price bands**: the official NSE/BSE bid books and issue notices (via public republishes).
 - **Company profiles**: AI analysis of the offer document and news coverage, with the sources listed.
 - **Accuracy**: computed by IPO Radar from its own archive of GMP marks and actual listing prices.
